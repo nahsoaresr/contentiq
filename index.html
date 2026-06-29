@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ContentIQ — Plataforma de Conteúdo com IA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark"><i class="ti ti-sparkles"></i></div>
+      ContentIQ
+    </div>
+    <div class="ws-switcher" onclick="showScreen('workspaces')">
+      <div class="ws-dot" id="ws-dot"></div>
+      <span id="ws-name">Neat Space</span>
+      <i class="ti ti-chevron-down"></i>
+    </div>
+    <nav class="topnav">
+      <button class="tn active" onclick="navTop(this,'dashboard')">Dashboard</button>
+      <button class="tn" onclick="navTop(this,'criar')">Criar</button>
+      <button class="tn" onclick="navTop(this,'templates')">Templates</button>
+      <button class="tn" onclick="navTop(this,'curadoria')">Curadoria</button>
+      <button class="tn" onclick="navTop(this,'calendario')">Calendário</button>
+      <button class="tn" onclick="navTop(this,'paidmedia')">Paid Media</button>
+    </nav>
+    <div class="topbar-right">
+      <div class="notif-btn"><i class="ti ti-bell"></i><span class="notif-dot"></span></div>
+      <div class="avatar">NF</div>
+    </div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sl">Principal</div>
+      <div class="si active" onclick="navSide(this,'dashboard')"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
+      <div class="si" onclick="navSide(this,'criar')"><i class="ti ti-sparkles"></i>Criar post <span class="chip chip-new">IA</span></div>
+      <div class="si" onclick="navSide(this,'templates')"><i class="ti ti-template"></i>Templates</div>
+      <div class="si" onclick="navSide(this,'calendario')"><i class="ti ti-calendar"></i>Calendário</div>
+
+      <div class="sl">Curadoria</div>
+      <div class="si" onclick="navSide(this,'curadoria')"><i class="ti ti-compass"></i>Visão geral <span class="chip chip-hot">Novo</span></div>
+      <div class="si" onclick="navSide(this,'tendencias')"><i class="ti ti-trending-up"></i>Tendências</div>
+      <div class="si" onclick="navSide(this,'inspiracoes')"><i class="ti ti-bookmark"></i>Inspirações</div>
+      <div class="si" onclick="navSide(this,'repost')"><i class="ti ti-repeat"></i>Repost & Comentar</div>
+
+      <div class="sl">Estratégia</div>
+      <div class="si" onclick="navSide(this,'briefing')"><i class="ti ti-id-badge"></i>Briefing da marca</div>
+      <div class="si" onclick="navSide(this,'diagnostico')"><i class="ti ti-chart-bar"></i>Diagnóstico <span class="chip chip-ok">72</span></div>
+      <div class="si" onclick="navSide(this,'memoria')"><i class="ti ti-brain"></i>Memória da IA</div>
+      <div class="si" onclick="navSide(this,'estrategia')"><i class="ti ti-target"></i>Estratégia</div>
+
+      <div class="sl">Paid Media</div>
+      <div class="si" onclick="navSide(this,'paidmedia')"><i class="ti ti-rocket"></i>Visão geral</div>
+      <div class="si" onclick="navSide(this,'impulse')"><i class="ti ti-ad"></i>Impulsionar</div>
+      <div class="si" onclick="navSide(this,'campanhas')"><i class="ti ti-chart-line"></i>Campanhas</div>
+      <div class="si" onclick="navSide(this,'orcamento')"><i class="ti ti-cash"></i>Budget</div>
+
+      <div class="sl">Workspace</div>
+      <div class="si" onclick="navSide(this,'workspaces')"><i class="ti ti-layout-grid"></i>Meus perfis</div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- DASHBOARD -->
+      <div class="screen active" id="screen-dashboard">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Bom dia, Nathalia 👋</h1>
+            <p class="page-sub">Sua estratégia esta semana está 78% no caminho certo.</p>
+          </div>
+          <button class="btn-primary" onclick="navSide(null,'criar')"><i class="ti ti-plus"></i>Novo post</button>
+        </div>
+
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text"><strong>IA recomenda:</strong> Seus carrosséis têm 2× mais salvamentos. Quinta às 19h é seu pico de audiência. Quer criar um agora?</div>
+          <button class="ai-bar-btn" onclick="navSide(null,'criar')">Criar agora</button>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Posts este mês</div>
+            <div class="metric-value">14</div>
+            <div class="metric-delta positive"><i class="ti ti-arrow-up"></i> +3 vs anterior</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Alcance médio</div>
+            <div class="metric-value">2.4k</div>
+            <div class="metric-delta positive"><i class="ti ti-arrow-up"></i> +18%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Engajamento</div>
+            <div class="metric-value">4.2%</div>
+            <div class="metric-delta positive"><i class="ti ti-arrow-up"></i> acima da média</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Agendados</div>
+            <div class="metric-value">3</div>
+            <div class="metric-delta neutral">próximos 7 dias</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title"><i class="ti ti-clock"></i>Próximos posts</div>
+            <div class="post-item">
+              <div class="post-icon ig"><i class="ti ti-brand-instagram"></i></div>
+              <div class="post-info">
+                <div class="post-name">Carrossel: dicas para hóspedes Airbnb</div>
+                <div class="post-meta">Amanhã · 19h</div>
+              </div>
+              <span class="status-badge scheduled">Agendado</span>
+            </div>
+            <div class="post-item">
+              <div class="post-icon li"><i class="ti ti-brand-linkedin"></i></div>
+              <div class="post-info">
+                <div class="post-name">Como escolher limpeza confiável</div>
+                <div class="post-meta">Qui · 08h</div>
+              </div>
+              <span class="status-badge scheduled">Agendado</span>
+            </div>
+            <div class="post-item">
+              <div class="post-icon tt"><i class="ti ti-brand-tiktok"></i></div>
+              <div class="post-info">
+                <div class="post-name">Bastidores: antes e depois</div>
+                <div class="post-meta">Sex · 18h</div>
+              </div>
+              <span class="status-badge draft">Rascunho</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="ti ti-brain"></i>Memória ativa da IA</div>
+            <div class="insight-item">
+              <div class="insight-icon purple"><i class="ti ti-trending-up"></i></div>
+              <div class="insight-text"><strong>Carrosséis funcionam:</strong> 3× mais salvamentos. IA prioriza esse formato nas sugestões.</div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-icon amber"><i class="ti ti-clock"></i></div>
+              <div class="insight-text"><strong>Pico às 19h (Qui/Ter):</strong> Detectado nos últimos 60 dias. Calendário auto-ajusta.</div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-icon teal"><i class="ti ti-users"></i></div>
+              <div class="insight-text"><strong>Antes/depois geram +40% comentários:</strong> Posts com comparação performam melhor.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><i class="ti ti-target"></i>Pilares de conteúdo desta semana</div>
+          <div class="pillars-grid">
+            <div class="pillar purple-bg"><div class="pillar-pct">40%</div><div class="pillar-label">Educativo</div></div>
+            <div class="pillar teal-bg"><div class="pillar-pct">25%</div><div class="pillar-label">Prova social</div></div>
+            <div class="pillar amber-bg"><div class="pillar-pct">20%</div><div class="pillar-label">Bastidores</div></div>
+            <div class="pillar coral-bg"><div class="pillar-pct">15%</div><div class="pillar-label">Oferta direta</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRIAR POST -->
+      <div class="screen" id="screen-criar">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Criar conteúdo</h1>
+            <p class="page-sub">A IA já conhece sua marca — só diga o que comunicar.</p>
+          </div>
+        </div>
+
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-sparkles"></i></div>
+          <div class="ai-bar-text"><strong>IA sugere para hoje:</strong> Carrossel "5 sinais que seu Airbnb precisa de limpeza profissional" — formato que mais converte no seu nicho.</div>
+          <button class="ai-bar-btn" onclick="document.getElementById('topic-input').value='5 sinais que seu Airbnb precisa de limpeza profissional'">Usar ideia</button>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title"><i class="ti ti-layout-grid"></i>Formato</div>
+            <div class="format-grid">
+              <div class="format-card selected" onclick="selectFormat(this)">
+                <i class="ti ti-layout-columns"></i>
+                <div class="format-name">Carrossel</div>
+                <div class="format-plat">IG · LinkedIn</div>
+              </div>
+              <div class="format-card" onclick="selectFormat(this)">
+                <i class="ti ti-video"></i>
+                <div class="format-name">Reels</div>
+                <div class="format-plat">IG · TikTok</div>
+              </div>
+              <div class="format-card" onclick="selectFormat(this)">
+                <i class="ti ti-photo"></i>
+                <div class="format-name">Feed</div>
+                <div class="format-plat">IG · Facebook</div>
+              </div>
+              <div class="format-card" onclick="selectFormat(this)">
+                <i class="ti ti-device-mobile"></i>
+                <div class="format-name">Stories</div>
+                <div class="format-plat">IG · Facebook</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><i class="ti ti-writing"></i>Assunto e objetivo</div>
+            <div class="field">
+              <label class="field-label">O que você quer comunicar?</label>
+              <textarea id="topic-input" class="field-input" rows="3" placeholder="ex: dicas para preparar o imóvel para hóspedes..."></textarea>
+            </div>
+            <div class="field">
+              <label class="field-label">Objetivo</label>
+              <div class="pill-row" id="goal-pills">
+                <span class="pill on" onclick="togglePill(this,'goal-pills')">Engajamento</span>
+                <span class="pill" onclick="togglePill(this,'goal-pills')">Venda</span>
+                <span class="pill" onclick="togglePill(this,'goal-pills')">Awareness</span>
+                <span class="pill" onclick="togglePill(this,'goal-pills')">Leads</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Plataformas</label>
+              <div class="pill-row" id="plat-pills">
+                <span class="pill on" onclick="this.classList.toggle('on')">Instagram</span>
+                <span class="pill on" onclick="this.classList.toggle('on')">LinkedIn</span>
+                <span class="pill" onclick="this.classList.toggle('on')">TikTok</span>
+                <span class="pill" onclick="this.classList.toggle('on')">X</span>
+                <span class="pill" onclick="this.classList.toggle('on')">Facebook</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-hook"></i>Tipo de abertura (gancho)</div>
+          <div class="hook-grid">
+            <div class="hook-card selected" onclick="selectHook(this)">
+              <div class="hook-label">Pergunta</div>
+              <div class="hook-text">"Seu Airbnb está realmente limpo para o próximo hóspede?"</div>
+            </div>
+            <div class="hook-card" onclick="selectHook(this)">
+              <div class="hook-label">Dado surpresa</div>
+              <div class="hook-text">"72% dos hóspedes deixam review negativo por limpeza."</div>
+            </div>
+            <div class="hook-card" onclick="selectHook(this)">
+              <div class="hook-label">Problema direto</div>
+              <div class="hook-text">"Você está perdendo 5 estrelas por causa disso."</div>
+            </div>
+            <div class="hook-card" onclick="selectHook(this)">
+              <div class="hook-label">IA decide</div>
+              <div class="hook-text" style="color:var(--purple);font-style:italic">"Deixa a IA escolher o melhor gancho para seu público."</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary full-width" onclick="generatePost()">
+          <i class="ti ti-sparkles"></i>Gerar conteúdo completo com IA
+        </button>
+
+        <div id="ai-result" class="ai-result" style="display:none">
+          <div class="ai-result-header">
+            <i class="ti ti-check-circle"></i> Conteúdo gerado pela IA
+          </div>
+          <div id="ai-result-text" class="ai-result-text"></div>
+          <button class="btn-secondary" onclick="copyResult()"><i class="ti ti-copy"></i>Copiar tudo</button>
+        </div>
+      </div>
+
+      <!-- TEMPLATES -->
+      <div class="screen" id="screen-templates">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Biblioteca de templates</h1>
+            <p class="page-sub">Prontos para editar no Canva · sua identidade visual já aplicada</p>
+          </div>
+        </div>
+        <div class="pill-row" style="margin-bottom:16px">
+          <span class="pill on" onclick="this.classList.toggle('on')">Todos</span>
+          <span class="pill" onclick="this.classList.toggle('on')">Instagram</span>
+          <span class="pill" onclick="this.classList.toggle('on')">LinkedIn</span>
+          <span class="pill" onclick="this.classList.toggle('on')">TikTok</span>
+          <span class="pill" onclick="this.classList.toggle('on')">Carrossel</span>
+          <span class="pill" onclick="this.classList.toggle('on')">Reels</span>
+          <span class="pill" onclick="this.classList.toggle('on')">Stories</span>
+        </div>
+        <div class="template-grid">
+          <div class="template-card" onclick="openTemplate('Carrossel educativo','Instagram · 8 slides')">
+            <div class="template-preview purple-bg"><i class="ti ti-layout-columns"></i><span class="tmpl-badge pro">Pro</span></div>
+            <div class="template-body">
+              <div class="template-name">Carrossel educativo</div>
+              <div class="template-meta">Instagram · 8 slides</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Antes e depois','Instagram · Feed')">
+            <div class="template-preview teal-bg"><i class="ti ti-photo"></i><span class="tmpl-badge free">Grátis</span></div>
+            <div class="template-body">
+              <div class="template-name">Antes e depois</div>
+              <div class="template-meta">Instagram · Feed</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Citação / frase','Instagram · Feed')">
+            <div class="template-preview coral-bg"><i class="ti ti-quote"></i><span class="tmpl-badge free">Grátis</span></div>
+            <div class="template-body">
+              <div class="template-name">Citação / frase</div>
+              <div class="template-meta">Instagram · Feed</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Stories sequencial','Instagram · 5 stories')">
+            <div class="template-preview amber-bg"><i class="ti ti-device-mobile"></i><span class="tmpl-badge pro">Pro</span></div>
+            <div class="template-body">
+              <div class="template-name">Stories sequencial</div>
+              <div class="template-meta">Instagram · 5 stories</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Post LinkedIn longo','LinkedIn · Artigo visual')">
+            <div class="template-preview blue-bg"><i class="ti ti-article"></i><span class="tmpl-badge pro">Pro</span></div>
+            <div class="template-body">
+              <div class="template-name">Post LinkedIn longo</div>
+              <div class="template-meta">LinkedIn · Artigo visual</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Depoimento / review','Instagram · Feed')">
+            <div class="template-preview coral-bg"><i class="ti ti-star"></i><span class="tmpl-badge free">Grátis</span></div>
+            <div class="template-body">
+              <div class="template-name">Depoimento / review</div>
+              <div class="template-meta">Instagram · Feed</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Checklist visual','Instagram · Carrossel')">
+            <div class="template-preview teal-bg"><i class="ti ti-checklist"></i><span class="tmpl-badge pro">Pro</span></div>
+            <div class="template-body">
+              <div class="template-name">Checklist visual</div>
+              <div class="template-meta">Instagram · Carrossel</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Lançamento / oferta','Instagram · Feed + Stories')">
+            <div class="template-preview purple-bg"><i class="ti ti-award"></i><span class="tmpl-badge pro">Pro</span></div>
+            <div class="template-body">
+              <div class="template-name">Lançamento / oferta</div>
+              <div class="template-meta">Instagram · Feed + Stories</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+          <div class="template-card" onclick="openTemplate('Lista de dicas','Todas as plataformas')">
+            <div class="template-preview amber-bg"><i class="ti ti-list"></i><span class="tmpl-badge free">Grátis</span></div>
+            <div class="template-body">
+              <div class="template-name">Lista de dicas</div>
+              <div class="template-meta">Todas as plataformas</div>
+              <button class="canva-btn"><i class="ti ti-brand-canva"></i>Editar no Canva</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDÁRIO -->
+      <div class="screen" id="screen-calendario">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Calendário editorial</h1>
+            <p class="page-sub">Junho 2026 · 14 posts planejados</p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary"><i class="ti ti-sparkles"></i>Gerar mês com IA</button>
+            <button class="btn-secondary"><i class="ti ti-plus"></i>Adicionar</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cal-header">
+            <span class="cal-day-label">Seg</span><span class="cal-day-label">Ter</span>
+            <span class="cal-day-label">Qua</span><span class="cal-day-label">Qui</span>
+            <span class="cal-day-label">Sex</span><span class="cal-day-label">Sáb</span>
+            <span class="cal-day-label">Dom</span>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-cell empty"><span class="cal-num">2</span></div>
+            <div class="cal-cell"><span class="cal-num">3</span><div class="cal-event ig">IG · Dica rápida</div></div>
+            <div class="cal-cell empty"><span class="cal-num">4</span></div>
+            <div class="cal-cell"><span class="cal-num">5</span><div class="cal-event li">LI · Artigo</div></div>
+            <div class="cal-cell empty"><span class="cal-num">6</span></div>
+            <div class="cal-cell"><span class="cal-num">7</span><div class="cal-event ig">IG · Carrossel</div></div>
+            <div class="cal-cell empty"><span class="cal-num">8</span></div>
+            <div class="cal-cell empty"><span class="cal-num">9</span></div>
+            <div class="cal-cell"><span class="cal-num">10</span><div class="cal-event ig">IG · Reels</div></div>
+            <div class="cal-cell empty"><span class="cal-num">11</span></div>
+            <div class="cal-cell"><span class="cal-num">12</span><div class="cal-event li">LI · Post</div><div class="cal-event ig">IG · Stories</div></div>
+            <div class="cal-cell empty"><span class="cal-num">13</span></div>
+            <div class="cal-cell"><span class="cal-num">14</span><div class="cal-event ig">IG · Carrossel</div></div>
+            <div class="cal-cell empty"><span class="cal-num">15</span></div>
+            <div class="cal-cell today"><span class="cal-num today-num">24</span><div class="cal-event today-event">IG · Hoje</div></div>
+            <div class="cal-cell empty"><span class="cal-num">25</span></div>
+            <div class="cal-cell empty"><span class="cal-num">26</span></div>
+            <div class="cal-cell"><span class="cal-num">27</span><div class="cal-event li">LI · Artigo</div></div>
+            <div class="cal-cell empty"><span class="cal-num">28</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CURADORIA -->
+      <div class="screen" id="screen-curadoria">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Curadoria de conteúdo</h1>
+            <p class="page-sub">Inspiração, tendências e referências — adaptadas para a Neat Space.</p>
+          </div>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text"><strong>IA analisou seu nicho:</strong> 3 tendências em alta esta semana para limpeza/Airbnb em Brisbane. "Antes e depois" está com pico no Instagram.</div>
+          <button class="ai-bar-btn" onclick="navSide(null,'tendencias')">Ver tendências</button>
+        </div>
+        <div class="two-col">
+          <div class="card clickable" onclick="navSide(null,'tendencias')">
+            <div class="card-title"><i class="ti ti-trending-up"></i>Tendências do nicho</div>
+            <div class="trend-preview-item hot">🔥 Em alta — "Antes e depois" de limpeza</div>
+            <div class="trend-preview-item rise">📈 Subindo — Checklist de saída para hosts</div>
+            <div class="trend-preview-item edu">💡 Evergreen — O que hóspedes mais notam</div>
+            <div class="card-link">Ver todas as 8 tendências <i class="ti ti-arrow-right"></i></div>
+          </div>
+          <div class="card clickable" onclick="navSide(null,'inspiracoes')">
+            <div class="card-title"><i class="ti ti-bookmark"></i>Banco de inspirações</div>
+            <div class="inspo-preview-grid">
+              <div class="inspo-thumb coral-bg"><i class="ti ti-layout-columns"></i></div>
+              <div class="inspo-thumb teal-bg"><i class="ti ti-photo"></i></div>
+              <div class="inspo-thumb purple-bg"><i class="ti ti-video"></i></div>
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:10px">6 referências salvas · IA detectou 3 padrões</div>
+            <div class="card-link">Gerenciar inspirações <i class="ti ti-arrow-right"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TENDÊNCIAS -->
+      <div class="screen" id="screen-tendencias">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Tendências do nicho</h1>
+            <p class="page-sub">Atualizado pela IA · limpeza, Airbnb, Brisbane</p>
+          </div>
+          <button class="btn-secondary"><i class="ti ti-refresh"></i>Atualizar</button>
+        </div>
+        <div class="trend-grid">
+          <div class="trend-card">
+            <span class="trend-score">🔥 98</span>
+            <span class="trend-tag hot">Em alta agora</span>
+            <div class="trend-title">"Antes e depois" de limpeza profunda para check-out</div>
+            <div class="trend-meta">Pico de 340% nas últimas 72h no nicho Airbnb</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag tt">TikTok</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um post de antes e depois de limpeza profunda para check-out do Airbnb para a Neat Space. Inclua copy para Instagram e TikTok, gancho forte, hashtags do nicho.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+          <div class="trend-card">
+            <span class="trend-score">📈 87</span>
+            <span class="trend-tag rise">Subindo</span>
+            <div class="trend-title">Checklist visual de limpeza para saída de hóspede</div>
+            <div class="trend-meta">Formato carrossel dominando nas últimas 2 semanas</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag li">LinkedIn</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um carrossel checklist de limpeza para saída de hóspede Airbnb para a Neat Space. 6 slides com copy completo para Instagram e LinkedIn.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+          <div class="trend-card">
+            <span class="trend-score">⭐ 82</span>
+            <span class="trend-tag edu">Evergreen</span>
+            <div class="trend-title">O que os hóspedes mais notam (e dão 5 estrelas)</div>
+            <div class="trend-meta">Consistentemente alto há 3 meses</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag li">LinkedIn</span><span class="plat-tag tt">TikTok</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um carrossel educativo sobre o que os hóspedes mais notam na limpeza do Airbnb para a Neat Space. 7 slides, copy para Instagram com gancho de curiosidade.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+          <div class="trend-card">
+            <span class="trend-score">💡 79</span>
+            <span class="trend-tag edu">Educativo</span>
+            <div class="trend-title">Erros que fazem hóspedes deixar review negativo</div>
+            <div class="trend-meta">Alta taxa de salvamento · audiência de hosts</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag li">LinkedIn</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um post sobre erros que fazem hóspedes Airbnb deixar review negativo focando em limpeza para a Neat Space. Carrossel 5 slides, copy para Instagram e LinkedIn.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+          <div class="trend-card">
+            <span class="trend-score">🎯 74</span>
+            <span class="trend-tag rise">Subindo</span>
+            <div class="trend-title">Bastidores: dia de limpeza em tempo real</div>
+            <div class="trend-meta">Reels de bastidores crescendo 60% no nicho</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag tt">TikTok</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um roteiro de Reels de bastidores de um dia de limpeza Airbnb para a Neat Space. Inclua gancho dos primeiros 3 segundos, sequência de cenas e legenda para Instagram e TikTok.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+          <div class="trend-card">
+            <span class="trend-score">✅ 68</span>
+            <span class="trend-tag sos">Prova social</span>
+            <div class="trend-title">Depoimento de host: "nunca mais tive review ruim"</div>
+            <div class="trend-meta">Formato citação + resultado gera leads qualificados</div>
+            <div class="trend-plats"><span class="plat-tag ig">Instagram</span><span class="plat-tag li">LinkedIn</span></div>
+            <button class="btn-primary small" onclick="generateFromTrend('Crie um post de prova social para a Neat Space com depoimento de host Airbnb em Brisbane que melhorou suas avaliações após contratar limpeza profissional. Copy para Instagram e LinkedIn com CTA.')">
+              <i class="ti ti-sparkles"></i>Criar com IA
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSPIRAÇÕES -->
+      <div class="screen" id="screen-inspiracoes">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Banco de inspirações</h1>
+            <p class="page-sub">Referências salvas · IA analisa padrões e adapta para sua voz</p>
+          </div>
+          <button class="btn-primary"><i class="ti ti-plus"></i>Adicionar</button>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text"><strong>IA detectou:</strong> Suas inspirações têm padrão em comum — fundo claro, texto curto por slide, CTA no último slide. Já apliquei isso nas sugestões.</div>
+        </div>
+        <div class="inspo-grid">
+          <div class="inspo-card">
+            <div class="inspo-thumb coral-bg"><i class="ti ti-layout-columns"></i><span class="plat-tag ig" style="position:absolute;top:6px;left:6px">IG</span></div>
+            <div class="inspo-body">
+              <div class="inspo-title">Carrossel com fundo bege e tipografia bold</div>
+              <div class="inspo-note">Gostei do ritmo — 1 dica por slide, CTA forte no final</div>
+              <div class="inspo-tags"><span class="itag">layout limpo</span><span class="itag">tipografia</span></div>
+              <button class="btn-primary small" onclick="generateFromTrend('Adapte o estilo de carrossel com fundo claro, 1 dica por slide, tipografia bold e CTA no final para a Neat Space. Tema: dicas para host Airbnb garantir 5 estrelas na limpeza. 6 slides, copy completo.')">IA adaptar</button>
+            </div>
+          </div>
+          <div class="inspo-card">
+            <div class="inspo-thumb teal-bg"><i class="ti ti-photo"></i><span class="plat-tag ig" style="position:absolute;top:6px;left:6px">IG</span></div>
+            <div class="inspo-body">
+              <div class="inspo-title">Foto de ambiente limpo com texto sobreposto</div>
+              <div class="inspo-note">Visual clean, o produto fala por si</div>
+              <div class="inspo-tags"><span class="itag">minimalista</span><span class="itag">foto</span></div>
+              <button class="btn-primary small" onclick="generateFromTrend('Crie texto e legenda para post de feed estático da Neat Space estilo minimalista: foto de ambiente limpo com texto sobreposto curto. Headline impactante (máx 6 palavras), legenda curta com CTA.')">IA adaptar</button>
+            </div>
+          </div>
+          <div class="inspo-card">
+            <div class="inspo-thumb purple-bg"><i class="ti ti-video"></i><span class="plat-tag ig" style="position:absolute;top:6px;left:6px">IG</span></div>
+            <div class="inspo-body">
+              <div class="inspo-title">Reels de transformação com transição no corte</div>
+              <div class="inspo-note">Antes/depois com transição na virada — muito impactante</div>
+              <div class="inspo-tags"><span class="itag">transição</span><span class="itag">antes/depois</span></div>
+              <button class="btn-primary small" onclick="generateFromTrend('Crie roteiro detalhado de Reels de transformação para a Neat Space com transição antes/depois de limpeza Airbnb. Estrutura de cenas (máx 30s), texto na tela em cada cena, legenda Instagram e TikTok.')">IA adaptar</button>
+            </div>
+          </div>
+          <div class="inspo-card">
+            <div class="inspo-thumb amber-bg"><i class="ti ti-quote"></i><span class="plat-tag li" style="position:absolute;top:6px;left:6px">LI</span></div>
+            <div class="inspo-body">
+              <div class="inspo-title">Post LinkedIn com história pessoal + aprendizado</div>
+              <div class="inspo-note">Estrutura: situação → problema → virada → lição</div>
+              <div class="inspo-tags"><span class="itag">storytelling</span><span class="itag">pessoal</span></div>
+              <button class="btn-primary small" onclick="generateFromTrend('Crie post LinkedIn para a Neat Space com storytelling: início do negócio de limpeza Airbnb em Brisbane → problema enfrentado → virada → aprendizado. Tom pessoal e profissional. Máx 1200 caracteres.')">IA adaptar</button>
+            </div>
+          </div>
+          <div class="inspo-card add-card" onclick="alert('Funcionalidade em desenvolvimento — cole um link ou descreva uma referência!')">
+            <i class="ti ti-plus"></i>
+            <span>Adicionar inspiração</span>
+            <span class="add-sub">Cole um link ou descreva</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPOST -->
+      <div class="screen" id="screen-repost">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Repost & Comentar</h1>
+            <p class="page-sub">Conteúdo de terceiros · IA sugere como usar estrategicamente</p>
+          </div>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text"><strong>Estratégia:</strong> Comentar em posts relevantes 2–3x por semana aumenta visibilidade orgânica em até 40%.</div>
+        </div>
+        <div class="repost-card">
+          <div class="repost-header">
+            <div class="repost-avatar li-bg">AB</div>
+            <div>
+              <div class="repost-name">Airbnb Australia</div>
+              <div class="repost-handle">@airbnbaustralia · LinkedIn</div>
+            </div>
+            <span class="plat-tag li" style="margin-left:auto">LinkedIn</span>
+          </div>
+          <div class="repost-body">Avaliações 5 estrelas aumentaram 23% em propriedades que investem em serviços profissionais de limpeza entre estadias...</div>
+          <div class="repost-stats">
+            <span><i class="ti ti-heart"></i> 1.2k</span>
+            <span><i class="ti ti-message"></i> 87 comentários</span>
+          </div>
+          <div class="repost-ai-tip"><strong>IA sugere:</strong> Comentar como especialista local em Brisbane — adicione dado específico sobre sua experiência.</div>
+          <div class="btn-row">
+            <button class="btn-primary small" onclick="generateFromTrend('Escreva um comentário estratégico para a Neat Space no post do Airbnb Australia sobre limpeza profissional e avaliações 5 estrelas. 3–4 linhas, perspectiva de especialista em limpeza Airbnb em Brisbane, termine com insight valioso.')"><i class="ti ti-sparkles"></i>Gerar comentário</button>
+            <button class="btn-secondary small" onclick="generateFromTrend('Crie post próprio para a Neat Space inspirado na estatística: hosts que investem em limpeza profissional têm 23% mais avaliações 5 estrelas. Adapte para Brisbane, formato carrossel para Instagram.')"><i class="ti ti-edit"></i>Criar post inspirado</button>
+          </div>
+        </div>
+        <div class="repost-card">
+          <div class="repost-header">
+            <div class="repost-avatar ig-bg">BH</div>
+            <div>
+              <div class="repost-name">Brisbane Hosts Community</div>
+              <div class="repost-handle">@brisbanehosts · Instagram</div>
+            </div>
+            <span class="plat-tag ig" style="margin-left:auto">Instagram</span>
+          </div>
+          <div class="repost-body">Erro que muitos hosts cometem: limpar a casa eles mesmos achando que economizam, mas o custo de oportunidade é enorme...</div>
+          <div class="repost-stats">
+            <span><i class="ti ti-heart"></i> 847</span>
+            <span><i class="ti ti-message"></i> 63 comentários</span>
+          </div>
+          <div class="repost-ai-tip"><strong>IA sugere:</strong> Ideal para repostar nos Stories com sua perspectiva de especialista.</div>
+          <div class="btn-row">
+            <button class="btn-primary small" onclick="generateFromTrend('Escreva comentário e texto para Stories da Neat Space sobre o post do Brisbane Hosts Community: hosts que limpam sozinhos perdem no custo de oportunidade. Comentário: 2–3 linhas. Stories: texto curto com CTA para contato.')"><i class="ti ti-sparkles"></i>Gerar comentário + Stories</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRIEFING -->
+      <div class="screen" id="screen-briefing">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Briefing da marca</h1>
+            <p class="page-sub">A IA usa esses dados para personalizar cada conteúdo gerado.</p>
+          </div>
+          <button class="btn-secondary"><i class="ti ti-edit"></i>Editar</button>
+        </div>
+        <div class="brief-list">
+          <div class="brief-step done">
+            <div class="step-num done"><i class="ti ti-check"></i></div>
+            <div class="step-body">
+              <div class="step-title">Identidade da marca</div>
+              <div class="step-desc">Quem você é, qual problema resolve e o que te diferencia.</div>
+              <div class="tag-row"><span class="itag">Neat Space</span><span class="itag">Limpeza Airbnb</span><span class="itag">Brisbane, AU</span></div>
+            </div>
+          </div>
+          <div class="brief-step done">
+            <div class="step-num done"><i class="ti ti-check"></i></div>
+            <div class="step-body">
+              <div class="step-title">Público-alvo</div>
+              <div class="step-desc">Quem você quer atingir, suas dores e como decidem.</div>
+              <div class="tag-row"><span class="itag">Proprietários Airbnb</span><span class="itag">Gestores de imóvel</span><span class="itag">Brisbane</span></div>
+            </div>
+          </div>
+          <div class="brief-step done">
+            <div class="step-num done"><i class="ti ti-check"></i></div>
+            <div class="step-body">
+              <div class="step-title">Tom de voz e posicionamento</div>
+              <div class="step-desc">Como você fala e como quer ser percebido.</div>
+              <div class="tag-row"><span class="itag">Profissional</span><span class="itag">Confiável</span><span class="itag">Direto</span></div>
+            </div>
+          </div>
+          <div class="brief-step done">
+            <div class="step-num done"><i class="ti ti-check"></i></div>
+            <div class="step-body">
+              <div class="step-title">Pilares de conteúdo</div>
+              <div class="step-desc">Temas recorrentes, mix de formatos e frequência.</div>
+              <div class="tag-row"><span class="itag">Educativo 40%</span><span class="itag">Prova social 25%</span><span class="itag">Bastidores 20%</span><span class="itag">Oferta 15%</span></div>
+            </div>
+          </div>
+          <div class="brief-step pending">
+            <div class="step-num pending">5</div>
+            <div class="step-body">
+              <div class="step-title">Objetivos de negócio</div>
+              <div class="step-desc">Metas de crescimento e conversão para os próximos 90 dias.</div>
+              <div class="tag-row"><span class="itag pending-tag">Pendente</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIAGNÓSTICO -->
+      <div class="screen" id="screen-diagnostico">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Diagnóstico de perfil</h1>
+            <p class="page-sub">@neatspace.au · atualizado 24 jun 2026</p>
+          </div>
+          <button class="btn-secondary"><i class="ti ti-refresh"></i>Atualizar</button>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-chart-bar"></i>Saúde da presença digital</div>
+          <div class="score-wrap">
+            <svg class="score-svg" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e5e7eb" stroke-width="7"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#534AB7" stroke-width="7"
+                stroke-dasharray="201" stroke-dashoffset="56" stroke-linecap="round"
+                transform="rotate(-90 40 40)"/>
+              <text x="40" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#534AB7">72</text>
+              <text x="40" y="49" text-anchor="middle" font-size="9" fill="#9ca3af">/100</text>
+            </svg>
+            <div class="score-bars">
+              <div class="score-row"><span class="score-label">Consistência</span><div class="score-track"><div class="score-fill" style="width:80%;background:#534AB7"></div></div><span class="score-val">80</span></div>
+              <div class="score-row"><span class="score-label">Engajamento</span><div class="score-track"><div class="score-fill" style="width:65%;background:#534AB7"></div></div><span class="score-val">65</span></div>
+              <div class="score-row"><span class="score-label">Variedade formatos</span><div class="score-track"><div class="score-fill" style="width:55%;background:#EF9F27"></div></div><span class="score-val">55</span></div>
+              <div class="score-row"><span class="score-label">Uso de hashtags</span><div class="score-track"><div class="score-fill" style="width:88%;background:#1D9E75"></div></div><span class="score-val">88</span></div>
+              <div class="score-row"><span class="score-label">CTA nos posts</span><div class="score-track"><div class="score-fill" style="width:60%;background:#EF9F27"></div></div><span class="score-val">60</span></div>
+              <div class="score-row"><span class="score-label">Frequência de vídeo</span><div class="score-track"><div class="score-fill" style="width:30%;background:#E24B4A"></div></div><span class="score-val">30</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title"><i class="ti ti-alert-triangle"></i>Oportunidades de melhoria</div>
+            <div class="insight-item"><div class="insight-icon amber"><i class="ti ti-video"></i></div><div class="insight-text"><strong>Reels ausentes há 21 dias.</strong> O algoritmo penaliza perfis sem vídeo. Impacto no alcance: -35%.</div></div>
+            <div class="insight-item"><div class="insight-icon amber"><i class="ti ti-message"></i></div><div class="insight-text"><strong>CTA em apenas 40% dos posts.</strong> Adicionar chamada clara pode dobrar cliques no link da bio.</div></div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="ti ti-check"></i>O que está funcionando</div>
+            <div class="insight-item"><div class="insight-icon teal"><i class="ti ti-layout-columns"></i></div><div class="insight-text"><strong>Carrosséis salvos 3× mais</strong> que a média do nicho. Continue priorizando esse formato.</div></div>
+            <div class="insight-item"><div class="insight-icon teal"><i class="ti ti-clock"></i></div><div class="insight-text"><strong>Posts às 19h (Qui/Ter)</strong> têm +40% de alcance consistentemente.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEMÓRIA DA IA -->
+      <div class="screen" id="screen-memoria">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Memória da IA</h1>
+            <p class="page-sub">O que a plataforma aprendeu sobre a Neat Space.</p>
+          </div>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text">A memória é exclusiva deste workspace. Cada perfil tem sua própria memória isolada — sem cruzamento de dados entre marcas.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-brain"></i>Aprendizados registrados — Neat Space</div>
+          <div class="mem-item"><div class="mem-icon purple-bg"><i class="ti ti-trending-up"></i></div><div><div class="insight-text"><strong>Carrosséis educativos convertem melhor.</strong> Taxa de salvamento 3× acima da média do nicho.</div><div class="mem-date">Aprendido em 12 posts · atualizado 18 jun</div></div></div>
+          <div class="mem-item"><div class="mem-icon purple-bg"><i class="ti ti-clock"></i></div><div><div class="insight-text"><strong>Pico de audiência: Ter e Qui às 19h.</strong> Detectado ao longo de 60 dias. Calendário ajustado.</div><div class="mem-date">Detectado em 15 jun</div></div></div>
+          <div class="mem-item"><div class="mem-icon purple-bg"><i class="ti ti-users"></i></div><div><div class="insight-text"><strong>Público responde a prova social.</strong> Posts com reviews geram 40% mais comentários e DMs.</div><div class="mem-date">Padrão detectado em 8 posts</div></div></div>
+          <div class="mem-item"><div class="mem-icon purple-bg"><i class="ti ti-writing"></i></div><div><div class="insight-text"><strong>Tom direto e prático funciona melhor</strong> que posts motivacionais. Linguagem técnica do nicho Airbnb gera mais confiança.</div><div class="mem-date">Aprendido em 6 jun</div></div></div>
+        </div>
+      </div>
+
+      <!-- ESTRATÉGIA -->
+      <div class="screen" id="screen-estrategia">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Estratégia de conteúdo</h1>
+            <p class="page-sub">Planejamento de 90 dias baseado no seu briefing e diagnóstico.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-target"></i>Pilares de conteúdo</div>
+          <div class="strat-item purple-border"><div class="strat-title">Educativo (40%)</div><div class="strat-desc">Dicas práticas para hosts, checklists de limpeza, erros comuns. Objetivo: autoridade e salvamentos.</div></div>
+          <div class="strat-item teal-border"><div class="strat-title">Prova social (25%)</div><div class="strat-desc">Reviews, antes/depois, depoimentos. Objetivo: confiança e conversão.</div></div>
+          <div class="strat-item amber-border"><div class="strat-title">Bastidores (20%)</div><div class="strat-desc">Processo de trabalho, equipe, dia a dia. Objetivo: humanização e conexão.</div></div>
+          <div class="strat-item coral-border"><div class="strat-title">Oferta direta (15%)</div><div class="strat-desc">Serviços, disponibilidade e CTA de contato. Objetivo: conversão direta.</div></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title"><i class="ti ti-calendar"></i>Frequência recomendada</div>
+            <div class="insight-item"><div class="insight-icon coral"><i class="ti ti-brand-instagram"></i></div><div class="insight-text"><strong>Instagram:</strong> 3–4 posts/semana. Carrossel (Ter/Qui), Reels (Sex), Stories diários.</div></div>
+            <div class="insight-item"><div class="insight-icon blue"><i class="ti ti-brand-linkedin"></i></div><div class="insight-text"><strong>LinkedIn:</strong> 1–2 posts/semana. Artigo (Seg), post curto (Qui).</div></div>
+            <div class="insight-item"><div class="insight-icon dark"><i class="ti ti-brand-tiktok"></i></div><div class="insight-text"><strong>TikTok:</strong> 2 vídeos/semana. Bastidores + dicas rápidas.</div></div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="ti ti-chart-line"></i>Metas para 90 dias</div>
+            <div class="insight-item"><div class="insight-icon teal"><i class="ti ti-users"></i></div><div class="insight-text"><strong>+500 seguidores</strong> orgânicos no Instagram com foco em público Brisbane.</div></div>
+            <div class="insight-item"><div class="insight-icon purple"><i class="ti ti-message"></i></div><div class="insight-text"><strong>20 contatos por DM/mês</strong> através de CTAs diretos nos posts de oferta.</div></div>
+            <div class="insight-item"><div class="insight-icon amber"><i class="ti ti-star"></i></div><div class="insight-text"><strong>Engajamento de 4.2% → 6%</strong> com mais vídeos e prova social.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAID MEDIA -->
+      <div class="screen" id="screen-paidmedia">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Paid Media — Neat Space</h1>
+            <p class="page-sub">Junho 2026 · 2 campanhas ativas · A$180 investidos</p>
+          </div>
+          <button class="btn-primary" onclick="navSide(null,'impulse')"><i class="ti ti-plus"></i>Novo anúncio</button>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-brain"></i></div>
+          <div class="ai-bar-text"><strong>IA recomenda:</strong> Seu carrossel "5 sinais" teve 4.8% de engajamento orgânico — ideal para impulsionar esta semana com A$30–50.</div>
+          <button class="ai-bar-btn" onclick="navSide(null,'impulse')">Impulsionar</button>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card"><div class="metric-label">Investimento total</div><div class="metric-value">A$180</div><div class="metric-delta neutral">este mês</div></div>
+          <div class="metric-card"><div class="metric-label">Alcance pago</div><div class="metric-value">12.4k</div><div class="metric-delta positive"><i class="ti ti-arrow-up"></i> +34%</div></div>
+          <div class="metric-card"><div class="metric-label">Custo por clique</div><div class="metric-value">A$0.48</div><div class="metric-delta positive">abaixo da média</div></div>
+          <div class="metric-card"><div class="metric-label">Leads gerados</div><div class="metric-value">11</div><div class="metric-delta positive"><i class="ti ti-arrow-up"></i> +5 vs mês ant.</div></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <div class="card-title"><i class="ti ti-chart-line"></i>Campanhas ativas</div>
+            <div class="campaign-item">
+              <div class="post-icon ig"><i class="ti ti-brand-instagram"></i></div>
+              <div class="post-info">
+                <div class="post-name">Limpeza check-out — Leads</div>
+                <div class="post-meta">Instagram · A$100 · CTR 1.7% · 8 leads</div>
+              </div>
+              <span class="status-badge scheduled">Ativa</span>
+            </div>
+            <div class="campaign-item">
+              <div class="post-icon li"><i class="ti ti-brand-facebook"></i></div>
+              <div class="post-info">
+                <div class="post-name">Awareness Brisbane hosts</div>
+                <div class="post-meta">Facebook · A$80 · CTR 1.4% · 3 leads</div>
+              </div>
+              <span class="status-badge draft">Pausada</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="ti ti-brain"></i>Insights da IA</div>
+            <div class="insight-item"><div class="insight-icon teal"><i class="ti ti-trending-up"></i></div><div class="insight-text"><strong>Instagram 2× melhor</strong> que Facebook em custo por lead. Realoque budget.</div></div>
+            <div class="insight-item"><div class="insight-icon amber"><i class="ti ti-clock"></i></div><div class="insight-text"><strong>Frequência alta no Facebook (3.4):</strong> público vendo muitas vezes. Hora de pausar ou trocar criativo.</div></div>
+            <div class="insight-item"><div class="insight-icon purple"><i class="ti ti-target"></i></div><div class="insight-text"><strong>Público 35–50 anos</strong> tem CPC 40% menor. Ajuste a segmentação.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPULSIONAR -->
+      <div class="screen" id="screen-impulse">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Impulsionar post</h1>
+            <p class="page-sub">IA analisa seus posts e recomenda os melhores para investir.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-rocket"></i>Posts recomendados para impulsionar</div>
+          <div class="post-item">
+            <div class="post-icon ig"><i class="ti ti-layout-columns"></i></div>
+            <div class="post-info">
+              <div class="post-name">Carrossel: 5 sinais que seu Airbnb precisa de limpeza</div>
+              <div class="post-meta">4.8% engajamento · 312 salvamentos · Score 96</div>
+            </div>
+            <span class="status-badge hot">🔥 Impulsionar agora</span>
+          </div>
+          <div class="post-item">
+            <div class="post-icon ig"><i class="ti ti-photo"></i></div>
+            <div class="post-info">
+              <div class="post-name">Antes e depois — check-out em 3 horas</div>
+              <div class="post-meta">3.9% engajamento · 187 salvamentos · Score 78</div>
+            </div>
+            <span class="status-badge scheduled">Bom candidato</span>
+          </div>
+        </div>
+        <button class="btn-primary full-width" onclick="generateFromTrend('Crie o texto completo de anúncio para impulsionar o carrossel \'5 sinais que seu Airbnb precisa de limpeza profissional\' da Neat Space no Instagram. Objetivo: geração de leads, orçamento A$50. Inclua: texto primário (máx 125 caracteres), headline (máx 40 caracteres), CTA recomendado e 2 variações para teste A/B.')">
+          <i class="ti ti-sparkles"></i>Gerar copy do anúncio com IA
+        </button>
+      </div>
+
+      <!-- CAMPANHAS -->
+      <div class="screen" id="screen-campanhas">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Campanhas</h1>
+            <p class="page-sub">2 ativas · 1 pausada</p>
+          </div>
+          <button class="btn-primary"><i class="ti ti-plus"></i>Nova campanha</button>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-brand-instagram"></i>Limpeza check-out — Geração de Leads</div>
+          <div class="metrics-grid" style="margin-bottom:10px">
+            <div class="metric-card"><div class="metric-label">Alcance</div><div class="metric-value" style="font-size:18px">8.2k</div></div>
+            <div class="metric-card"><div class="metric-label">CTR</div><div class="metric-value" style="font-size:18px">1.7%</div></div>
+            <div class="metric-card"><div class="metric-label">Leads</div><div class="metric-value" style="font-size:18px">8</div></div>
+            <div class="metric-card"><div class="metric-label">Custo/lead</div><div class="metric-value" style="font-size:18px">A$12</div></div>
+          </div>
+          <div class="repost-ai-tip"><strong>IA:</strong> Campanha performando bem. Variação A domina com 68% das impressões. Considere pausar variação B em 3 dias.</div>
+          <button class="btn-primary small" onclick="generateFromTrend('Analise a campanha de geração de leads da Neat Space no Instagram: alcance 8.2k, CTR 1.7%, 8 leads, custo por lead A$12.5, frequência 1.8, orçamento A$100. Recomende próximos passos: vale aumentar o budget? Como diminuir o custo por lead?')"><i class="ti ti-brain"></i>Analisar com IA</button>
+        </div>
+      </div>
+
+      <!-- BUDGET -->
+      <div class="screen" id="screen-orcamento">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Estratégia de budget</h1>
+            <p class="page-sub">IA recomenda como distribuir seu investimento em ads</p>
+          </div>
+        </div>
+        <div class="ai-bar">
+          <div class="ai-bar-icon"><i class="ti ti-cash"></i></div>
+          <div class="ai-bar-text"><strong>Com A$200/mês:</strong> a IA estima 15–22 leads qualificados — suficiente para 3–5 novos clientes mensais para a Neat Space.</div>
+        </div>
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-title"><i class="ti ti-chart-pie"></i>Distribuição recomendada — A$200/mês</div>
+          <div class="budget-item"><div class="post-icon ig"><i class="ti ti-brand-instagram"></i></div><div class="post-info"><div class="post-name">Instagram — Geração de leads</div><div class="post-meta">Melhor custo por lead · público mais qualificado</div></div><div class="budget-bar-wrap"><div class="budget-bar" style="width:70%;background:#993556"></div></div><span class="budget-val">A$140</span></div>
+          <div class="budget-item"><div class="post-icon li"><i class="ti ti-brand-facebook"></i></div><div class="post-info"><div class="post-name">Facebook — Remarketing</div><div class="post-meta">Reengajar quem visitou mas não converteu</div></div><div class="budget-bar-wrap"><div class="budget-bar" style="width:15%;background:#185FA5"></div></div><span class="budget-val">A$30</span></div>
+          <div class="budget-item"><div class="post-icon tt"><i class="ti ti-brand-tiktok"></i></div><div class="post-info"><div class="post-name">TikTok — Teste de awareness</div><div class="post-meta">Testar novo canal com orçamento mínimo</div></div><div class="budget-bar-wrap"><div class="budget-bar" style="width:15%;background:#444441"></div></div><span class="budget-val">A$30</span></div>
+        </div>
+        <button class="btn-primary full-width" onclick="generateFromTrend('Monte um plano detalhado de paid media para a Neat Space com orçamento de A$200/mês para o primeiro mês. Inclua: quais campanhas criar no Meta Ads Manager passo a passo, segmentação exata, copies sugeridos, KPIs para acompanhar e quando escalar o budget.')">
+          <i class="ti ti-sparkles"></i>Gerar plano de mídia detalhado com IA
+        </button>
+      </div>
+
+      <!-- WORKSPACES -->
+      <div class="screen" id="screen-workspaces">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Meus perfis</h1>
+            <p class="page-sub">Cada workspace tem briefing, memória e análise independentes.</p>
+          </div>
+          <button class="btn-primary"><i class="ti ti-plus"></i>Novo workspace</button>
+        </div>
+        <div class="ai-bar" style="background:#E1F5EE">
+          <div class="ai-bar-icon" style="background:#0F6E56"><i class="ti ti-lock"></i></div>
+          <div class="ai-bar-text" style="color:#04342C"><strong>Memória isolada por workspace:</strong> A IA nunca mistura dados entre perfis. Cada marca tem seu próprio briefing e histórico.</div>
+        </div>
+        <div class="ws-list">
+          <div class="ws-card active" onclick="switchWorkspace('Neat Space','#534AB7')">
+            <div class="ws-avatar" style="background:#EEEDFE;color:#534AB7">NS</div>
+            <div class="ws-info">
+              <div class="ws-name">Neat Space</div>
+              <div class="ws-sub">@neatspace.au · Instagram conectado</div>
+              <div class="ws-tags"><span class="itag">Limpeza Airbnb</span><span class="itag">Brisbane</span></div>
+            </div>
+            <span class="status-badge scheduled">Atual</span>
+          </div>
+          <div class="ws-card" onclick="switchWorkspace('Nathalia Ferreira','#993556')">
+            <div class="ws-avatar" style="background:#FBEAF0;color:#993556">NF</div>
+            <div class="ws-info">
+              <div class="ws-name">Nathalia Ferreira</div>
+              <div class="ws-sub">Perfil pessoal / profissional</div>
+              <div class="ws-tags"><span class="itag">Marketing</span><span class="itag">MBA</span><span class="itag">LinkedIn</span></div>
+            </div>
+            <button class="btn-secondary small">Acessar</button>
+          </div>
+          <div class="ws-card add-ws" onclick="alert('Adicione um novo perfil ou cliente!')">
+            <i class="ti ti-plus"></i>
+            <span>Adicionar novo perfil ou cliente</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- AI MODAL -->
+  <div id="ai-modal" class="modal-overlay" style="display:none" onclick="closeModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title"><i class="ti ti-sparkles"></i>Gerando com IA...</div>
+        <button class="modal-close" onclick="document.getElementById('ai-modal').style.display='none'"><i class="ti ti-x"></i></button>
+      </div>
+      <div id="modal-content" class="modal-content"></div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="copyModal()"><i class="ti ti-copy"></i>Copiar</button>
+        <button class="btn-primary" onclick="document.getElementById('ai-modal').style.display='none'">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="ai.js"></script>
+</body>
+</html>
